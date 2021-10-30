@@ -36,23 +36,23 @@ export default function PostReviewCard({match, history}) {
         setEdit(false);
     }
     
-    const selectedCard = posts.find((el) => el.id === Number(match.params.id));
+    //const selectedCard = posts.find((el) => el.id === Number(match.params.id));
 
     return (
         <div className='PostCard'>
-            {(!isEdit && 
+            {posts && ((!isEdit && 
                 <div className='PostWrapper'>
                     <button onClick={() => history.push('/')}>X</button>
-                    <Post post={selectedCard} />
-                    <div className='EditBtn' onClick={handleEdit}>Изменить</div>
-                    <div className='DeleteBtn' onClick={handleDelete}>Удалить</div>
+                    <Post post={posts.find((el) => el.id === Number(match.params.id))} />
+                    <button className='EditBtn' onClick={handleEdit}>Изменить</button>
+                    <button className='DeleteBtn' onClick={handleDelete}>Удалить</button>
                 </div>
             ) || 
                 (isEdit && 
                     <div className='FormWrapper'>
-                        <Form post={selectedCard} onSubmit={handleSubmit} onClose={handleClose} />
+                        <Form post={posts.find((el) => el.id === Number(match.params.id))} onSubmit={handleSubmit} onClose={handleClose} />
                     </div>
-                )
+                ))
            }
         </div>
     )

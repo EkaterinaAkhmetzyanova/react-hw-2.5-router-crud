@@ -3,6 +3,7 @@ import Post from "./Post";
 
 export default function HomePage({history}) {
     const [posts] = useJsonFetch('http://localhost:7777/posts');
+    console.log(posts);
     const addPost = () => {
         history.push('/posts/new');
     }

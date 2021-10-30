@@ -52,3 +52,7 @@
   align-self: flex-end;
   width: 100px;
 }
+
+.PostWrapper {
+  width: 600px;
+}
